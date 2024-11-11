@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .output {
+            border: 1px solid #ced4da;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-bottom: 60px; /* 保證內容不被 footer 遮住 */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">關於我</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">聯絡我</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 聯絡表單 -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <h2 class="text-center">聯絡我</h2>
+            <form id="contactForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="name" class="form-control" placeholder="名字" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="email" id="email" class="form-control" placeholder="電子郵件" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea id="message" class="form-control" rows="5" placeholder="訊息" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">送出</button>
+                </div>
+            </form>
+
+            <!-- 顯示輸入的內容 -->
+            <div class="output" id="output" style="display: none;">
+                <h5>您輸入的資訊：</h5>
+                <p><strong>名字:</strong> <span id="outputName"></span></p>
+                <p><strong>電子郵件:</strong> <span id="outputEmail"></span></p>
+                <p><strong>訊息:</strong> <span id="outputMessage"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>聯絡方式: example@email.com | +123 456 7890</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="text-white me-3">
+                    <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="text-white me-3">
+                    <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
+                </a>
+                <a href="https://line.me" target="_blank" class="text-white">
+                    <i class="fab fa-line" style="font-size: 1.5rem;"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const form = document.getElementById('contactForm');
+        const outputDiv = document.getElementById('output');
+        const outputName = document.getElementById('outputName');
+        const outputEmail = document.getElementById('outputEmail');
+        const outputMessage = document.getElementById('outputMessage');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // 防止表單提交
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // 更新顯示的內容
+            outputName.textContent = name;
+            outputEmail.textContent = email;
+            outputMessage.textContent = message;
+
+            // 顯示輸入的內容區域
+            outputDiv.style.display = 'block';
+
+            // 重設表單
+            form.reset();
+        });
+    </script>
+</body>
+
+</html>
